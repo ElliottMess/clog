@@ -12,6 +12,7 @@ Imports:
     dplyr,
     tidyr,
     knitr,
+    rmarkdown,
     magrittr,
     purrr,
     rlang,

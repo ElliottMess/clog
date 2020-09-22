@@ -97,6 +97,14 @@ change_df_by_variables_and_ids <-function(data, change_variables, change_ids, da
   }) %>% unlist
 
   change_value<-function(row,col,new){
+    class_col <- class(data[,col][[1]])
+    if(class_col == "numeric"){new <- as.numeric(new)
+    }else if(class_col == "integer"){new <- as.integer(new)
+    }else if(class_col == "character"){new <- as.character(new)
+    }else if(class_col == "factor"){new <- as.factor(new)
+    }else{
+        stop(paste0(col, " has type ", class_col, " while your new value has type: ", class(new)))
+    }
 
     data[row,col]<<-new
   }
